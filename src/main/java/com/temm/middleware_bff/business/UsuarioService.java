@@ -27,9 +27,7 @@ public class UsuarioService {
     }
 
     public AutenticaUsuarioResponseDTO autentica(@RequestBody AutenticaUsuarioRequestDTO autenticaUsuarioRequestDTO) {
-        var token = usuarioClient.autentica(autenticaUsuarioRequestDTO);
-        System.out.println(token);
-        return token;
+        return  usuarioClient.autentica(autenticaUsuarioRequestDTO);
     }
 
     public CartaoCreditoResponseDTO createCreditCard(

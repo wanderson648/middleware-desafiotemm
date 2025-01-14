@@ -23,14 +23,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/middleware")
-@Tag(name = "middleware-bff-api")
 @SecurityRequirement(name = "bearerAuth")
 public class MiddlewareController {
 
     @Autowired
     private UsuarioService usuarioService;
 
-    @Operation(summary = "Cadastrar Usuário", method = "POST")
+    @Operation(tags = "Usuário", summary = "Cadastrar Usuário", method = "POST")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Cadastro realizado com sucesso")
     })
@@ -39,7 +38,7 @@ public class MiddlewareController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.createUser(usuarioDTO));
     }
 
-    @Operation(summary = "Autenticar Usuário", method = "POST")
+    @Operation(tags = "Autenticação", summary = "Autenticar Usuário", method = "POST")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Autenticação realizada com sucesso"),
             @ApiResponse(responseCode = "400", description = "email/password incorretos")
@@ -49,7 +48,7 @@ public class MiddlewareController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.autentica(autenticaUsuarioRequestDTO));
     }
 
-    @Operation(summary = "Cadastrar Cartão", method = "POST")
+    @Operation(tags = "Cartões", summary = "Cadastrar Cartão", method = "POST")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "400", description = "email não encontrado"),
@@ -60,7 +59,7 @@ public class MiddlewareController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.createCreditCard(email, cartaoCreditoDTO));
     }
 
-    @Operation(summary = "Lista Cartões", method = "GET")
+    @Operation(tags = "Cartões", summary = "Lista Cartões", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "403", description = "Não autorizado a realizar a operação")
@@ -70,7 +69,7 @@ public class MiddlewareController {
         return ResponseEntity.ok().body(usuarioService.listCreditCards());
     }
 
-    @Operation(summary = "Realizaar Transacão", method = "POST")
+    @Operation(tags = "Transações", summary = "Realizar Transacão", method = "POST")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "400", description = "email não encontrado"),
@@ -81,7 +80,7 @@ public class MiddlewareController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.createTransaction(email, transacaoDTO));
     }
 
-    @Operation(summary = "Lista Transações", method = "GET")
+    @Operation(tags = "Transações", summary = "Lista Transações", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "403", description = "Não autorizado a realizar a operação")

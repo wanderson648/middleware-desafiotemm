@@ -21,10 +21,10 @@ public class FeignConfig {
                 if(attributes != null) {
                     HttpServletRequest request = attributes.getRequest();
 
-                    String header = request.getHeader("Authorization");
+                    String token = request.getHeader("Authorization");
 
-                    if (header != null && !header.isEmpty()) {
-                        template.header("Authorization", header);
+                    if (token != null && !token.isEmpty()) {
+                        template.header("Authorization", token);
                     }
                 }
             }
