@@ -8,6 +8,7 @@ import com.temm.middleware_bff.api.response.AutenticaUsuarioResponseDTO;
 import com.temm.middleware_bff.api.response.CartaoCreditoResponseDTO;
 import com.temm.middleware_bff.api.response.TransacaoResponseDTO;
 import com.temm.middleware_bff.api.response.UsuarioResponseDTO;
+import com.temm.middleware_bff.security.FeignConfig;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "usuario-api", url = "http://localhost:8083")
+@FeignClient(value = "desafiotecnico", url = "http://localhost:8083", configuration = FeignConfig.class)
 @SecurityRequirement(name = "bearerAuth")
 public interface UsuarioClient {
 
