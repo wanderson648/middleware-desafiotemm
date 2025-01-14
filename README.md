@@ -38,7 +38,7 @@ Antes de começar, certifique-se de que você tem os seguintes requisitos instal
    mvn spring-boot:run
    ```
 
-   A aplicação será iniciada em `http://localhost:8083`.
+   A aplicação será iniciada em `http://localhost:8082`.
 
 ---
 
